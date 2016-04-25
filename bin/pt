@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e # die young
+
+[ -n "$DEBUG" ] && set -x
+
+if [ -n "$SSH_AUTH_SOCK" ]; then
+  sock_dir=$(dirname $SSH_AUTH_SOCK)
+  SSH_OPTS="--volume $sock_dir:$sock_dir --env SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
+fi
+
+# [ -f $HOME/.pt ] || touch $HOME/.pt
+
+docker run -it --rm $SSH_OPTS \
+  -v $HOME/.pt:/root/.pt \
+  -v $(pwd):/pwd \
+  pt $@
