@@ -2,11 +2,13 @@
 
 > Minimal client to use Pivotal Tracker from the console.
 
-## Usage
+## Building
 
 Build the image first:
 
     docker build -t pt .
+
+## Usage
 
 To use the image run:
 
@@ -22,7 +24,5 @@ want to add to your path:
 
 You have to create your credentials config file in `~/.pt`:
 
-```
-:email: !ruby/string:HighLine::String mail@example.com
-:api_number: abcdef123456789abcdef123456789ff
-```
+    :email: !ruby/string:HighLine::String mail@example.com
+    :api_number: abcdef123456789abcdef123456789ff
