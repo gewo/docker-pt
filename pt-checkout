@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eo pipefail
+[ -n  "$DEBUG" ] && set -x
+
+PT_NR=$1
+BRANCH="$2"
+TICKET_NR=$(pt show ${PT_NR} | grep -o 'Id: [0-9]*' | grep -o '[0-9]*')
+
+git checkout -b ${BRANCH}_${TICKET_NR}

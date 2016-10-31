@@ -14,8 +14,9 @@ build:
 	@touch $@
 
 clean:
-	docker rmi pt
+	-docker rmi pt
 	-rm -f build
 
 install:
 	@install -v -d "$(DESTDIR)$(BINDIR)/" && install -v -m 0755 pt "$(DESTDIR)$(BINDIR)/pt"
+	@install -v -d "$(DESTDIR)$(BINDIR)/" && install -v -m 0755 pt-checkout "$(DESTDIR)$(BINDIR)/pt-checkout"
